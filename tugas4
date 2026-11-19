@@ -1,0 +1,19 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int nilai;
+    cout << "Masukkan nilai: ";
+    cin >> nilai;
+
+    if (nilai > 90)
+        cout << "Nilai A";
+    else if (nilai > 80)
+        cout << "Nilai B";
+    else if (nilai > 70)
+        cout << "Nilai C";
+    else
+        cout << "Nilai D";
+
+    return 0;
+}
