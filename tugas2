@@ -1,0 +1,41 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    const int HARGA_SOTO = 15000;
+    const int HARGA_RAWON = 20000;
+    int pilihan, jumlah, total = 0;
+    char lagi;
+
+    do {
+        cout << "\n=== MENU MAKANAN ===\n";
+        cout << "1. Soto  - Rp15000\n";
+        cout << "2. Rawon - Rp20000\n";
+        cout << "Pilih menu (1/2): ";
+        cin >> pilihan;
+
+        if (pilihan != 1 && pilihan != 2) {
+            cout << "Menu tidak tersedia!\n";
+        } else {
+            cout << "Jumlah porsi: ";
+            cin >> jumlah;
+            total += (pilihan == 1 ? HARGA_SOTO : HARGA_RAWON) * jumlah;
+        }
+
+        cout << "Tambah pesanan lagi? (y/n): ";
+        cin >> lagi;
+    } while (lagi == 'y' || lagi == 'Y');
+
+    cout << "\n=== TOTAL BAYAR: Rp" << total << " ===\n";
+
+    int bayar;
+    cout << "Uang bayar: Rp";
+    cin >> bayar;
+
+    if (bayar >= total)
+        cout << "Kembalian : Rp" << bayar - total << endl;
+    else
+        cout << "Uang kurang Rp" << total - bayar << endl;
+
+    return 0;
+}
