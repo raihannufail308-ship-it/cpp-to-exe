@@ -1,0 +1,73 @@
+#include <iostream>
+using namespace std;
+
+const int HARGA_SOTO  = 15000;
+const int HARGA_RAWON = 20000;
+const int HARGA_PECEL = 10000;
+const int HARGA_TEH   = 3000;
+const int HARGA_KOPI  = 5000;
+
+void tampilMenu() {
+    cout << "\n=== MENU ===\n";
+    cout << "MAKANAN\n";
+    cout << "1. Soto  - Rp15000\n";
+    cout << "2. Rawon - Rp20000\n";
+    cout << "3. Pecel - Rp10000\n";
+    cout << "MINUMAN\n";
+    cout << "4. Teh   - Rp3000\n";
+    cout << "5. Kopi  - Rp5000\n";
+}
+
+int ambilHarga(int pilihan) {
+    switch (pilihan) {
+        case 1: return HARGA_SOTO;
+        case 2: return HARGA_RAWON;
+        case 3: return HARGA_PECEL;
+        case 4: return HARGA_TEH;
+        case 5: return HARGA_KOPI;
+        default: return 0;
+    }
+}
+
+int prosesPesanan() {
+    int pilihan, jumlah, total = 0;
+    char lagi;
+
+    do {
+        tampilMenu();
+        cout << "Pilih menu (1-5): ";
+        cin >> pilihan;
+
+        int harga = ambilHarga(pilihan);
+        if (harga == 0) {
+            cout << "Menu tidak tersedia!\n";
+        } else {
+            cout << "Jumlah: ";
+            cin >> jumlah;
+            total += harga * jumlah;
+        }
+
+        cout << "Tambah pesanan lagi? (y/n): ";
+        cin >> lagi;
+    } while (lagi == 'y' || lagi == 'Y');
+
+    return total;
+}
+
+void pembayaran(int total) {
+    int bayar;
+    cout << "\n=== TOTAL BAYAR: Rp" << total << " ===\n";
+    cout << "Uang bayar: Rp";
+    cin >> bayar;
+
+    if (bayar >= total)
+        cout << "Kembalian : Rp" << bayar - total << endl;
+    else
+        cout << "Uang kurang Rp" << total - bayar << endl;
+}
+
+int main() {
+    int total = prosesPesanan();
+    pembayaran(total);
+    return 0;
+}
